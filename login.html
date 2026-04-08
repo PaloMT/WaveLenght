@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telepathy Party</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="main-container">
+        <h1 class="game-title">Todavia estoy buscando nombre</h1> 
+        
+        <div class="login-card">
+            <div class="input-group">
+                <label for="playerName">Tu apodo:</label>
+                <input type="text" id="playerName" placeholder="Ej: PacoElMago" autocomplete="off" maxlength="15">
+            </div>
+
+            <button id="btn-create" class="btn primary-btn">✨ Crear Sala Nueva</button>
+
+            <div class="divider">
+                <span>O ÚNETE A UNA</span>
+            </div>
+
+            <div class="join-group">
+                <input type="text" id="roomCode" placeholder="Código (Ej: WAVE-123)" autocomplete="off" maxlength="8">
+                <button id="btn-join" class="btn secondary-btn">Entrar 🚀</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>
