@@ -1,20 +1,25 @@
 
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_socketio import SocketIO, join_room, emit
 import random
 import string
 
-# Configuramos la aplicación
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'tu_secreto_super_seguro' # Necesario para Flask
 
-# Activamos CORS para que tu web (frontend) pueda hablar con este servidor
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-# --- NUESTRA "BASE DE DATOS" EN MEMORIA RAM ---
-# Aquí guardaremos las salas. Tendrá esta forma:
-# {'WAVE-A1B2': {'players': ['Paco', 'Maria'], 'state': 'lobby'}}
 games = {}
+
+@app.route('/')
+def index():
+    """Sirve el archivo HTML principal"""
+    return send_from_directory('.', 'index.html')
+
+@app.route('/<path:filename>')
+def serve_static(filename):
+    """Sirve el CSS y el JS para que la web se vea bonita y funcione"""
+    return send_from_directory('.', filename)
 
 def generar_codigo():
     """Genera un código aleatorio de 4 caracteres (Ej: 8XF2)"""
